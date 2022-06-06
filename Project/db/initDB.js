@@ -50,10 +50,10 @@ async function main() {
         await connection.query(`
             CREATE TABLE like(
                 id INTEGER PRIMARY KEY AUTO_INCREMENT,
-                idUsers INTEGER NOT NULL,
-                FOREIGN KEY (idUsers) REFERENCES users(id),
+                idUser INTEGER NOT NULL,
+                FOREIGN KEY (idUser) REFERENCES user(id),
                 idPost INTEGER NOT NULL,
-                likes BOOLEAN DEFAULT false,
+                like BOOLEAN DEFAULT false,
                 FOREIGN KEY (idPost) REFERENCES post(id),
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
             )

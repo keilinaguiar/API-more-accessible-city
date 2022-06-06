@@ -7,6 +7,7 @@ const { PORT } = process.env;
 
 const app = express();
 
+//Logger morgan
 app.use(morgan('dev'));
 
 app.use(express.json());

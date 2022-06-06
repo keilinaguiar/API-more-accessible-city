@@ -19,8 +19,8 @@ para denunciarlos.
 
 - User:
   - id
-  - Like
-  - email
+  - name
+  - createdAt
 
 ## Entidades
 
@@ -30,10 +30,10 @@ para denunciarlos.
   - email
   - password
   - createdAt
+  - role
   - modifiedAt
-  - marcar como resuelto
 
-- Publicación:
+- Post:
   - id
   - idAdmin
   - titulo
@@ -41,8 +41,17 @@ para denunciarlos.
   - ciudad
   - barrio
   - foto
+  - resuelto
   - createdAt
   - modifiedAt
+
+- like:
+
+  - id
+  - idUser
+  - idPost
+  - like
+  - createdAt
 
 ## Endpoints
 
