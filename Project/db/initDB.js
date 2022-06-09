@@ -7,10 +7,8 @@ async function main() {
 
         console.log('Borrando tablas existentes...');
 
-        await connection.query('DROP TABLE IF EXISTS like');
         await connection.query('DROP TABLE IF EXISTS post');
         await connection.query('DROP TABLE IF EXISTS admin');
-        await connection.query('DROP TABLE IF EXISTS user');
 
         console.log('Creando tablas...');
 
@@ -19,15 +17,6 @@ async function main() {
                 id INTEGER PRIMARY KEY AUTO_INCREMENT,
                 email VARCHAR(100) UNIQUE NOT NULL,
                 password VARCHAR(100) NOT NULL,
-                role ENUM("admin"),
-                createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
-            )
-        `);
-
-        await connection.query(`
-            CREATE TABLE user (
-                id INTEGER PRIMARY KEY AUTO_INCREMENT,
-                name VARCHAR(50) UNIQUE NOT NULL,
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
             )
         `);
@@ -42,26 +31,23 @@ async function main() {
                 city VARCHAR(20) NOT NULL,
                 suburb VARCHAR(20) NOT NULL,
                 image VARCHAR(100),
+                likes INT,
                 attended BOOLEAN DEFAULT false,
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
                 modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP
             )
         `);
-        await connection.query(`
-            CREATE TABLE like(
-                id INTEGER PRIMARY KEY AUTO_INCREMENT,
-                idUser INTEGER NOT NULL,
-                FOREIGN KEY (idUser) REFERENCES user(id),
-                idPost INTEGER NOT NULL,
-                like BOOLEAN DEFAULT false,
-                FOREIGN KEY (idPost) REFERENCES post(id),
-                createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
-            )
-        `);
+
         console.log('Tablas creadas');
+
+        await connection.query(`
+           INSERT INTO admin(email, password)
+           VALUES ("admin@gmail.com", "123456")
+           `);
+        console.log('Usuario administrador creado');
     } catch (err) {
         console.error(err);
-    }finally{
+    } finally {
         if (connection) connection.release();
 
         process.exit();
