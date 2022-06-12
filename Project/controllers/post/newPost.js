@@ -44,7 +44,7 @@ const newPost = async (req, res, next) => {
         }
         insertPost(
             title,
-            idAdmin,
+            req.idAdmin,
             descriptions,
             city,
             suburb,

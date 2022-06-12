@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { generateError } = require('../../helpers');
+const { SECRET } = process.env;
 const selectUserByEmail = require('../../db/adminQueries/selectAdminByEmailQuery');
 
 const loginUser = async (req, res, next) => {
@@ -29,7 +30,7 @@ const loginUser = async (req, res, next) => {
         };
 
         // Firmamos el token.
-        const token = jwt.sign(payload, process.env.SECRET, {
+        const token = jwt.sign(payload, SECRET, {
             expiresIn: '10d',
         });
 

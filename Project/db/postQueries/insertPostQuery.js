@@ -8,7 +8,7 @@ const insertPost = async (
     city,
     suburb,
     attended,
-    imageName = ''
+    image = ''
 ) => {
     let connection;
 
@@ -28,8 +28,8 @@ const insertPost = async (
         }
         //generamos el nuevo post
         const [newPost] = await connection.query(
-            `INSERT INTO post (title, idAdmin, descriptions, city, suburb, attended, imageName) VALUES (?, ?, ?, ?, ?, ?, ?)`,
-            [title, idUser, descriptions, city, suburb, attended, imageName]
+            `INSERT INTO post (title, idAdmin, descriptions, city, suburb, attended, image) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+            [title, idUser, descriptions, city, suburb, attended, image]
         );
 
         return newPost.inserId;

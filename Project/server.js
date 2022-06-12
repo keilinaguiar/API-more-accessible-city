@@ -22,7 +22,7 @@ app.use(fileUpload());
  * ## Middlewares ##
  * #################
  */
-const authUser = require('./middlewares/authUser');
+const authUser = require('./middlewares/authAdmin');
 
 /**
  * ########################
@@ -33,7 +33,7 @@ const authUser = require('./middlewares/authUser');
 const { loginAdmin } = require('./controllers/admin');
 
 //login de Administrador
-app.post('/login', loginAdmin);
+app.get('/login', loginAdmin);
 
 /**
  * ######################
@@ -41,14 +41,16 @@ app.post('/login', loginAdmin);
  * ######################
  */
 
-const getPosts = require('./controllers/post/getPosts');
-const newPost = require('./controllers/post');
+const {newPost, listPosts, getPost } = require('./controllers/post');
 
 //Nuevo post
 app.post('/post', authUser, newPost);
 
-//Vista de los posts
-app.get('/posts?keyword', getPosts);
+//Lista de los posts
+app.get('/posts', listPosts);
+
+//obtenemos un post por keyword
+app.get("/posts?keyword", getPost)
 
 /**
  * ######################

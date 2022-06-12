@@ -7,10 +7,150 @@
 	},
 	"item": [
 		{
+			"name": "posts",
+			"item": [
+				{
+					"name": "New Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Rampas",
+									"type": "text"
+								},
+								{
+									"key": "idAdmin",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "descriptions",
+									"value": "En el la zona de gran via no hay rampa para poder acceder a los sitios turisticos, lo que dificulta su acceso a personas en silla de ruedas",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "Madrid",
+									"type": "text"
+								},
+								{
+									"key": "suburb",
+									"value": "centro",
+									"type": "text"
+								},
+								{
+									"key": "attended",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/keili/Downloads/img_18243.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server}}/post",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Posts",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{server}}/posts",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Post",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{server}}/posts?keyword=madrid",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"posts"
+							],
+							"query": [
+								{
+									"key": "keyword",
+									"value": "madrid"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Login User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
-				"method": "POST",
-				"header": [],
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTUzMTk2LCJleHAiOjE2NTU0MTcxOTZ9.BE7KHn0Owy2PRqKsy6aG15d2C4Jvo0mDa08ZWMX5BaA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "{{server}}/login",
 					"host": [
@@ -18,92 +158,6 @@
 					],
 					"path": [
 						"login"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "New Post",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "{{token_admin}}",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "title",
-							"value": "",
-							"type": "text"
-						},
-						{
-							"key": "idAdmin",
-							"value": "",
-							"type": "text"
-						},
-						{
-							"key": "descriptions",
-							"value": "",
-							"type": "text"
-						},
-						{
-							"key": "city",
-							"value": "",
-							"type": "text"
-						},
-						{
-							"key": "suburb",
-							"value": "",
-							"type": "text"
-						},
-						{
-							"key": "attended",
-							"value": "",
-							"type": "text"
-						},
-						{
-							"key": "image",
-							"type": "file",
-							"src": []
-						}
-					]
-				},
-				"url": {
-					"raw": "{{server}}/post",
-					"host": [
-						"{{server}}"
-					],
-					"path": [
-						"post"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "show Posts",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{server}}/posts?keyword=málaga",
-					"host": [
-						"{{server}}"
-					],
-					"path": [
-						"posts"
-					],
-					"query": [
-						{
-							"key": "keyword",
-							"value": "málaga"
-						}
 					]
 				}
 			},

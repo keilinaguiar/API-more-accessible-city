@@ -21,7 +21,7 @@ const authUser = async (req, res, next) => {
         }
 
         
-        req.user = token;
+        req.idAdmin = token.id;
 
         // Pasamos el control a la siguiente función.
         next();
