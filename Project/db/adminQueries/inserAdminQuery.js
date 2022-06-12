@@ -12,7 +12,7 @@ const inserAdminQuery = async (email, password) => {
 
         // Obtenemos un array de admin que cumplan la condición establecida.
         const [admin] = await connection.query(
-            `SELECT id password FROM admin WHERE email = ?`,
+            `SELECT id, password FROM admin WHERE email = ?`,
             [email]
         );
 
@@ -28,7 +28,7 @@ const inserAdminQuery = async (email, password) => {
         // Encriptamos la contraseña.
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // Creamos el usuario.
+        // Creamos el admin.
         const [newAdmin] = await connection.query(
             `INSERT INTO admin (email, password) VALUES(?, ?)`,
             [email, hashedPassword]

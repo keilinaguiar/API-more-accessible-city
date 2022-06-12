@@ -30,23 +30,25 @@ const authUser = require('./middlewares/authUser');
  * ########################
  */
 
-const { loginUser } = require('./controllers/admin');
+const { loginAdmin } = require('./controllers/admin');
 
-//login de usuario.
-app.post('/login', loginUser);
+//login de Administrador
+app.post('/login', loginAdmin);
+
 /**
  * ######################
  * ## Endpoints post ##
  * ######################
  */
+
 const getPosts = require('./controllers/post/getPosts');
 const newPost = require('./controllers/post');
+
 //Nuevo post
 app.post('/post', authUser, newPost);
 
 //Vista de los posts
-app.get('/posts/:city', getPosts);
-app.get('/posts', getPosts);
+app.get('/posts?keyword', getPosts);
 
 /**
  * ######################

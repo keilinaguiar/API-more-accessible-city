@@ -1,3 +1,3 @@
-const loginUser = require('./loginAdmin');
+const loginAdmin = require('./loginAdmin');
 
-module.exports = { loginUser };
+module.exports = { loginAdmin };

@@ -30,9 +30,8 @@ async function main() {
                 descriptions VARCHAR(300) NOT NULL,
                 city VARCHAR(20) NOT NULL,
                 suburb VARCHAR(20) NOT NULL,
-                image VARCHAR(100),
-                likes INT,
                 attended BOOLEAN DEFAULT false,
+                image VARCHAR(100),
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
                 modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP
             )

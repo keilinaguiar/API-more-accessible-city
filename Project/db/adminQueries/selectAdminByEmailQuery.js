@@ -1,5 +1,5 @@
 const getConnection = require('../getConnection');
-const generateError = require('../../helpers');
+const { generateError } = require('../../helpers');
 
 const selectUserByEmail = async (email) => {
     let connection;
@@ -17,7 +17,7 @@ const selectUserByEmail = async (email) => {
         // ya está vinculado a otro admin. Lanzamos un error.
         if (admin.length > 1) {
             throw generateError(
-                'Ya existe un usuario con ese nombre en la base de datos',
+                'Ya existe un administrador con ese email en la base de datos',
                 409
             );
         }

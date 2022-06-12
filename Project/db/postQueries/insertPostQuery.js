@@ -1,4 +1,4 @@
-const generateError = require('../../helpers');
+const { generateError } = require('../../helpers');
 const getConnection = require('../getConnection');
 
 const insertPost = async (
@@ -7,12 +7,14 @@ const insertPost = async (
     descriptions,
     city,
     suburb,
-    attended
+    attended,
+    imageName = ''
 ) => {
     let connection;
 
     try {
         connection = await getConnection();
+        //creamos un array de post para poder verificar que no se publiquen el mismo problema de accesibilidad varias veces
         const [posts] = await connection.query(
             `SELECT id FROM post WHERE title = ? AND city = ? AND suburb = ?`,
             [title, city, suburb]
@@ -24,10 +26,10 @@ const insertPost = async (
                 403
             );
         }
-
+        //generamos el nuevo post
         const [newPost] = await connection.query(
-            `INSERT INTO post (title, idAdmin, descriptions, city, suburb, attended) VALUES (?, ?, ?, ?, ?, ?)`,
-            [title, idUser, descriptions, city, suburb, attended]
+            `INSERT INTO post (title, idAdmin, descriptions, city, suburb, attended, imageName) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+            [title, idUser, descriptions, city, suburb, attended, imageName]
         );
 
         return newPost.inserId;
