@@ -76,3 +76,15 @@ en ese barrio, tanto los problemas activos como los que fueron resueltos.
 El administrador de la web debería poder acceder mediante un formulario de login y acceder a
 la zona de administración.
 
+######################################################################
+## COSAS QUE HAY QUE MODIFICAR ##
+
+El nombre del enpoint para agregar nuevos posts debería mantener el formato del resto de enpoints que sirven para interactuar con los posts, por tanto debería ser /posts en lugar de /post (en singular).
+
+Faltaría un endpoint para mostrar información sobre un post concreto. Algo así como /posts/:idPost.
+
+El endpoint que permite obtener un post por keyword también permite obtener la lista de posts (sin usar la keyword), por tanto el controlador getPost es innecesario (sobra un endpoint).
+
+Hay partes del código que no están identadas correctamente y alguna que otra falta de otrografía. 
+
+No es necesario devolver la propiedad message en el login, con devolver status y data es suficiente.

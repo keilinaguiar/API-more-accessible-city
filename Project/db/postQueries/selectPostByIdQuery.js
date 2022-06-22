@@ -1,13 +1,13 @@
 const { generateError } = require('../../helpers');
 const getConnection = require('../getConnection');
 
-const selectPostQuery = async (keyword) => {
+const selectPostByIdQuery = async (id) => {
     let connection;
     try {
         connection = await getConnection();
         const [posts] = await connection.query(
-            `SELECT P.title, P.descriptions, P.city, P.suburb, P.attended, P.image, P.createdAt  FROM posts P WHERE city LIKE ? OR descriptions LIKE ?`,
-            [`%${keyword}%`, `%${keyword}%`]
+            `SELECT P.title, P.descriptions, P.city, P.suburb, P.attended, P.image, P.createdAt  FROM posts P WHERE id=?`,
+            [`${id}`]
         );
 
         if (posts.length < 1) {
@@ -19,4 +19,5 @@ const selectPostQuery = async (keyword) => {
     }
 };
 
-module.exports = selectPostQuery;
+
+module.exports = selectPostByIdQuery;

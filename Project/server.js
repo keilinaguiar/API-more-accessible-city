@@ -41,16 +41,20 @@ app.get('/login', loginAdmin);
  * ######################
  */
 
-const {newPost, listPosts, getPost } = require('./controllers/post');
+const {
+    newPost,
+    listPosts,
+    getPostById,
+} = require('./controllers/post');
 
 //Nuevo post
-app.post('/post', authUser, newPost);
+app.post('/posts', authUser, newPost);
 
 //Lista de los posts
 app.get('/posts', listPosts);
 
-//obtenemos un post por keyword
-app.get("/posts?keyword", getPost)
+//obtenemos un post por id
+app.get('/posts/:id', getPostById);
 
 /**
  * ######################

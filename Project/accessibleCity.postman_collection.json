@@ -16,7 +16,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token_admin}}",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjU1OTIwMzkzLCJleHAiOjE2NTY3ODQzOTN9.P5T4eJQsnSOfYLNihcLTXT5aeqYhnxUwKQUZctl5QkA",
 								"type": "text"
 							}
 						],
@@ -25,7 +25,7 @@
 							"formdata": [
 								{
 									"key": "title",
-									"value": "Rampas",
+									"value": "Ascensores",
 									"type": "text"
 								},
 								{
@@ -35,7 +35,7 @@
 								},
 								{
 									"key": "descriptions",
-									"value": "En el la zona de gran via no hay rampa para poder acceder a los sitios turisticos, lo que dificulta su acceso a personas en silla de ruedas",
+									"value": "En el la zona de Tetuan no hay ascensores para poder acceder al metro de tetuan, lo que dificulta su acceso a personas en silla de ruedas, mujeres con coches, personas mayores, etc,",
 									"type": "text"
 								},
 								{
@@ -45,7 +45,7 @@
 								},
 								{
 									"key": "suburb",
-									"value": "centro",
+									"value": "Tetuan",
 									"type": "text"
 								},
 								{
@@ -61,30 +61,6 @@
 							]
 						},
 						"url": {
-							"raw": "{{server}}/post",
-							"host": [
-								"{{server}}"
-							],
-							"path": [
-								"post"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "List Posts",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
 							"raw": "{{server}}/posts",
 							"host": [
 								"{{server}}"
@@ -97,7 +73,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Post",
+					"name": "List Posts",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -125,6 +101,31 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get Post By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{server}}/posts/",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -138,7 +139,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTUzMTk2LCJleHAiOjE2NTU0MTcxOTZ9.BE7KHn0Owy2PRqKsy6aG15d2C4Jvo0mDa08ZWMX5BaA",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjU1OTIwMzkzLCJleHAiOjE2NTY3ODQzOTN9.P5T4eJQsnSOfYLNihcLTXT5aeqYhnxUwKQUZctl5QkA",
 						"type": "text"
 					}
 				],

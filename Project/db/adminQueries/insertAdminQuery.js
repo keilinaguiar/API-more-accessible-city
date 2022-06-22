@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 
 const { generateError } = require('../../helpers');
 
-const inserAdminQuery = async (email, password) => {
+const insertAdminQuery = async (email, password) => {
     let connection;
 
     try {
@@ -41,4 +41,4 @@ const inserAdminQuery = async (email, password) => {
     }
 };
 
-module.exports = inserAdminQuery;
+module.exports = insertAdminQuery;

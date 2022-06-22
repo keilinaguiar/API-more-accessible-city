@@ -36,7 +36,6 @@ const loginUser = async (req, res, next) => {
 
         res.send({
             status: 'ok',
-            message: 'inicio sesión del administrador con éxito!',
             data: {
                 token,
             },

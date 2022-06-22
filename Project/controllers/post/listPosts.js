@@ -1,10 +1,16 @@
-
+const selectPostQuery = require('../../db/postQueries/selectPostQuery');
 const selectAllPostsQuery = require('../../db/postQueries/selectAllPostsQuery');
 
 const listPosts = async (req, res, next) => {
     try {
-
-        const posts = await selectAllPostsQuery();
+        let posts;
+        const { keyword } = req.query;
+        if (keyword) {
+            posts = await selectPostQuery(keyword);
+        }
+       else{
+        posts = await selectAllPostsQuery();
+       } 
 
         res.send({
             status: "ok",

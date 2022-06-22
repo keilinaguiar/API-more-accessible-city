@@ -1,8 +1,8 @@
 const newPost = require('./newPost');
 const listPosts = require('./listPosts');
-const getPost = require('./getPost');
+const getPostById = require('./getPostById');
 module.exports = {
     newPost,
     listPosts,
-    getPost,
+    getPostById,
 };

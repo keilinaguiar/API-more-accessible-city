@@ -16,7 +16,7 @@ const insertPost = async (
         connection = await getConnection();
         //creamos un array de post para poder verificar que no se publiquen el mismo problema de accesibilidad varias veces
         const [posts] = await connection.query(
-            `SELECT id FROM post WHERE title = ? AND city = ? AND suburb = ?`,
+            `SELECT id FROM posts WHERE title = ? AND city = ? AND suburb = ?`,
             [title, city, suburb]
         );
 
@@ -28,7 +28,7 @@ const insertPost = async (
         }
         //generamos el nuevo post
         const [newPost] = await connection.query(
-            `INSERT INTO post (title, idAdmin, descriptions, city, suburb, attended, image) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+            `INSERT INTO posts (title, idAdmin, descriptions, city, suburb, attended, image) VALUES (?, ?, ?, ?, ?, ?, ?)`,
             [title, idUser, descriptions, city, suburb, attended, image]
         );
 

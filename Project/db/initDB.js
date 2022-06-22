@@ -7,7 +7,7 @@ async function main() {
 
         console.log('Borrando tablas existentes...');
 
-        await connection.query('DROP TABLE IF EXISTS post');
+        await connection.query('DROP TABLE IF EXISTS posts');
         await connection.query('DROP TABLE IF EXISTS admin');
 
         console.log('Creando tablas...');
@@ -22,7 +22,7 @@ async function main() {
         `);
 
         await connection.query(`
-            CREATE TABLE post (
+            CREATE TABLE posts (
                 id INTEGER PRIMARY KEY AUTO_INCREMENT,
                 idAdmin INTEGER NOT NULL,
                 FOREIGN KEY (idAdmin) REFERENCES admin(id),
