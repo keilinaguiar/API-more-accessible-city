@@ -48,7 +48,7 @@ Nos logueamos en el postman mediante el body introduciendo el email y la contras
 
 admin:
 
--   GET [/login] - Login de admin (devuelve token) 
+-   GET [/login] - Login de admin (devuelve token)
 
 ################################################################
 Luego de loguearnos y obtener el token del admin, he guardado la informacion del token como una variable y la he puesto en la cabecera de new post como KEY = Authorization VALUE {{token_admin}}.
@@ -65,26 +65,12 @@ para poder crear el post correctamente se nececita agregar en este mismo orden (
 
 Post:
 
--   POST [/post] - Permite crear una publicacion (necesita cabecera con token para autorizar) ✅
--   GET [/post] - Lista de todas las publicaciones
--   GET [/posts?keyword] - Devuelve una publicacion de una ciudad en especifico o de alguna palabra clave que se encuentre en la descripcion
-
-####################################################################################################
+-   POST [/post] - Permite crear una publicacion (necesita cabecera con token para autorizar)
+-   GET [/posts] - Lista de todas las publicaciones y tambien se permite filtrar por keyword
+-   GET [/posts/:id] - Devuelve un post por 1
+    ####################################################################################################
 
 Pueden escoger un barrio de la ciudad y ver la lista de lugares con problemas de accesibilidad
 en ese barrio, tanto los problemas activos como los que fueron resueltos.
 El administrador de la web debería poder acceder mediante un formulario de login y acceder a
 la zona de administración.
-
-######################################################################
-## COSAS QUE HAY QUE MODIFICAR ##
-
-El nombre del enpoint para agregar nuevos posts debería mantener el formato del resto de enpoints que sirven para interactuar con los posts, por tanto debería ser /posts en lugar de /post (en singular).
-
-Faltaría un endpoint para mostrar información sobre un post concreto. Algo así como /posts/:idPost.
-
-El endpoint que permite obtener un post por keyword también permite obtener la lista de posts (sin usar la keyword), por tanto el controlador getPost es innecesario (sobra un endpoint).
-
-Hay partes del código que no están identadas correctamente y alguna que otra falta de otrografía. 
-
-No es necesario devolver la propiedad message en el login, con devolver status y data es suficiente.
