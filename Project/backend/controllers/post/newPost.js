@@ -6,19 +6,14 @@ const insertPost = require('../../db/postQueries/insertPostQuery');
 
 const newPost = async (req, res, next) => {
     try {
-        const { title, idAdmin, descriptions, city, suburb, attended } =
-            req.body;
+        const { title, idAdmin, descriptions, city, suburb } = req.body;
 
-        if (
-            !title ||
-            !idAdmin ||
-            !descriptions ||
-            !city ||
-            !suburb ||
-            !attended
-        ) {
+        console.log(req.body);
+
+        if (!title || !idAdmin || !descriptions || !city || !suburb) {
             throw generateError('Faltan campos', 400);
         }
+
         //Variable donde se almacenara el nombre con el que guardaremos la imagen en el disco
         let imageName;
 
@@ -42,15 +37,8 @@ const newPost = async (req, res, next) => {
 
             await sharpImage.toFile(imagePath);
         }
-        insertPost(
-            title,
-            req.idAdmin,
-            descriptions,
-            city,
-            suburb,
-            attended,
-            imageName
-        );
+
+        insertPost(title, idAdmin, descriptions, city, suburb, imageName);
 
         res.send({
             status: 'Ok',

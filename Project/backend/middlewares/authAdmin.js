@@ -20,8 +20,7 @@ const authUser = async (req, res, next) => {
             throw err;
         }
 
-        
-        req.idAdmin = token.id;
+        req.body.idAdmin = token.id;
 
         // Pasamos el control a la siguiente función.
         next();

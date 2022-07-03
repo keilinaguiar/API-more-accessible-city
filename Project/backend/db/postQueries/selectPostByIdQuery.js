@@ -6,7 +6,7 @@ const selectPostByIdQuery = async (id) => {
     try {
         connection = await getConnection();
         const [posts] = await connection.query(
-            `SELECT P.title, P.descriptions, P.city, P.suburb, P.attended, P.image, P.createdAt  FROM posts P WHERE id=?`,
+            `SELECT P.id, P.title, P.descriptions, P.city, P.suburb, P.attended, P.image, P.createdAt  FROM posts P WHERE id=?`,
             [`${id}`]
         );
 
@@ -18,6 +18,5 @@ const selectPostByIdQuery = async (id) => {
         if (connection) connection.release();
     }
 };
-
 
 module.exports = selectPostByIdQuery;

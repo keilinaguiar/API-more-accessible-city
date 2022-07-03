@@ -6,6 +6,7 @@ const selectUserByEmail = require('../../db/adminQueries/selectAdminByEmailQuery
 
 const loginUser = async (req, res, next) => {
     try {
+        console.log('hola');
         // Obtenemos los campos del body.
         const { email, password } = req.body;
 

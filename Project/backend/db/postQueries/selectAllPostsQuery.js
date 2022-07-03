@@ -5,7 +5,7 @@ const selectAllPostsQuery = async () => {
     try {
         connection = await getConnection();
         const [posts] = await connection.query(`
-        SELECT P.title, P.descriptions, P.city, P.suburb, P.attended, P.image, P.createdAt FROM posts P
+        SELECT P.id, P.title, P.descriptions, P.city, P.suburb, P.attended, P.image, P.createdAt FROM posts P
         `);
         return posts;
     } finally {

@@ -3,6 +3,8 @@ require('dotenv').config();
 const fileUpload = require('express-fileupload');
 const express = require('express');
 const morgan = require('morgan');
+const cors = require('cors');
+const path = require('path');
 
 const { PORT } = process.env;
 
@@ -12,10 +14,16 @@ const app = express();
 app.use(morgan('dev'));
 
 // Deserializamos un body con formato "raw".
-app.use(express.json());
+app.use(express.json({ limit: '50gb' }));
 
 // Deserializamos un body con formato "form-data".
-app.use(fileUpload());
+app.use(fileUpload({ limit: '50gb' }));
+
+//Poder usar estaticos
+app.use(express.static(path.join(__dirname, '/uploads')));
+
+//Permitir las CORS
+app.use(cors());
 
 /**
  * #################
@@ -33,7 +41,7 @@ const authUser = require('./middlewares/authAdmin');
 const { loginAdmin } = require('./controllers/admin');
 
 //login de Administrador
-app.get('/login', loginAdmin);
+app.post('/login', loginAdmin);
 
 /**
  * ######################
@@ -45,6 +53,8 @@ const {
     newPost,
     listPosts,
     getPostById,
+    updatePost,
+    getPostByCity,
 } = require('./controllers/post');
 
 //Nuevo post
@@ -56,12 +66,17 @@ app.get('/posts', listPosts);
 //obtenemos un post por id
 app.get('/posts/:id', getPostById);
 
+app.get('/posts/cities/:city', getPostByCity);
+
+//Actualizamos el post
+app.patch('/posts/:id', authUser, updatePost);
+
 /**
  * ######################
  * ## Middleware Error ##
  * ######################
  */
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
     console.error(err);
 
     res.status(err.statusCode || 500).send({

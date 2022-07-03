@@ -26,7 +26,7 @@ async function main() {
                 id INTEGER PRIMARY KEY AUTO_INCREMENT,
                 idAdmin INTEGER NOT NULL,
                 FOREIGN KEY (idAdmin) REFERENCES admin(id),
-                title VARCHAR(20) NOT NULL,
+                title VARCHAR(50) NOT NULL,
                 descriptions VARCHAR(300) NOT NULL,
                 city VARCHAR(20) NOT NULL,
                 suburb VARCHAR(20) NOT NULL,
