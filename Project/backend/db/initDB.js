@@ -29,7 +29,7 @@ async function main() {
                 title VARCHAR(50) NOT NULL,
                 descriptions VARCHAR(300) NOT NULL,
                 city VARCHAR(20) NOT NULL,
-                suburb VARCHAR(20) NOT NULL,
+                suburb VARCHAR(60) NOT NULL,
                 attended BOOLEAN DEFAULT false,
                 image VARCHAR(100),
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
