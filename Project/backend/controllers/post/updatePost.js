@@ -51,8 +51,8 @@ const updatePost = async (req, res, next) => {
             descriptions,
             city,
             suburb,
-            imageName,
             attended,
+            imageName,
             id
         );
 

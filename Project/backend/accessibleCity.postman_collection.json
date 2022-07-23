@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "43789dda-ffc4-4730-b74d-cb9f8c485d4d",
+		"_postman_id": "e0722921-c9ec-48db-98c9-9112ca0c7b8f",
 		"name": "accessibleCity",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "21150535"
@@ -16,7 +16,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjU1OTIwMzkzLCJleHAiOjE2NTY3ODQzOTN9.P5T4eJQsnSOfYLNihcLTXT5aeqYhnxUwKQUZctl5QkA",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjU4NTg5MDAxLCJleHAiOjE2NTk0NTMwMDF9.ODZfRT-TnO0emvnAdXv6Nc4ZFz4hZNMn3ir_URjvtsM",
 								"type": "text"
 							}
 						],
@@ -35,7 +35,7 @@
 								},
 								{
 									"key": "descriptions",
-									"value": "En el la zona de Tetuan no hay ascensores para poder acceder al metro de tetuan, lo que dificulta su acceso a personas en silla de ruedas, mujeres con coches, personas mayores, etc,",
+									"value": "En el la zona de Tetuan no hay ascensores para poder acceder al metro de tetuan, lo que dificulta su acceso a personas en silla de ruedas, mujeres con coches, personas mayores, etc.",
 									"type": "text"
 								},
 								{
@@ -85,18 +85,12 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{server}}/posts?keyword=madrid",
+							"raw": "{{server}}/posts",
 							"host": [
 								"{{server}}"
 							],
 							"path": [
 								"posts"
-							],
-							"query": [
-								{
-									"key": "keyword",
-									"value": "madrid"
-								}
 							]
 						}
 					},
@@ -115,13 +109,101 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{server}}/posts/",
+							"raw": "{{server}}/posts/3",
 							"host": [
 								"{{server}}"
 							],
 							"path": [
 								"posts",
-								""
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Posts By Cities",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/posts/cities/sevilla",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"posts",
+								"cities",
+								"sevilla"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Update",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjU4NTg5MDAxLCJleHAiOjE2NTk0NTMwMDF9.ODZfRT-TnO0emvnAdXv6Nc4ZFz4hZNMn3ir_URjvtsM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Ascensores",
+									"type": "text"
+								},
+								{
+									"key": "idAdmin",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "descriptions",
+									"value": "En el la zona de Tetuan no hay ascensores para poder acceder al metro de tetuan, lo que dificulta su acceso a personas en silla de ruedas, mujeres con coches, personas mayores, etc.",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "Madrid",
+									"type": "text"
+								},
+								{
+									"key": "suburb",
+									"value": "Tetúan",
+									"type": "text"
+								},
+								{
+									"key": "attended",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server}}/posts/2",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"posts",
+								"2"
 							]
 						}
 					},
@@ -131,15 +213,12 @@
 		},
 		{
 			"name": "Login User",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjU1OTIwMzkzLCJleHAiOjE2NTY3ODQzOTN9.P5T4eJQsnSOfYLNihcLTXT5aeqYhnxUwKQUZctl5QkA",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjU4NTg5MDAxLCJleHAiOjE2NTk0NTMwMDF9.ODZfRT-TnO0emvnAdXv6Nc4ZFz4hZNMn3ir_URjvtsM",
 						"type": "text"
 					}
 				],

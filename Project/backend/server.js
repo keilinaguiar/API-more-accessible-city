@@ -66,6 +66,7 @@ app.get('/posts', listPosts);
 //obtenemos un post por id
 app.get('/posts/:id', getPostById);
 
+//Obtenemos un posts por ciudad o palabra clave
 app.get('/posts/cities/:city', getPostByCity);
 
 //Actualizamos el post
